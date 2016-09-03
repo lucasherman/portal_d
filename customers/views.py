@@ -3,7 +3,7 @@ from django.template import loader
 from django.http import HttpResponse
 from django.template import RequestContext
 from django.shortcuts import render_to_response
-from customers.forms import UserForm
+from customers.forms import CustomerRegistrationForm, CustomerLoginForm
 
 def index(request):
     template = loader.get_template('customers/index.html')
@@ -18,20 +18,25 @@ def login_register(request):
     registered = False
 
     if request.method == 'POST':
-        user_form = UserForm(data=request.POST)
+        customer_registration_form = CustomerRegistrationForm(data=request.POST)
 
-        if user_form.is_valid():
-            user = user_form.save()
-            user.set_password(user.password)
-            user.save()
+        if customer_registration_form.is_valid():
+            customer = customer_registration_form.save()
+            customer.set_password(customer.password)
+            customer.save()
         else:
-            print(user_form.errors)
+            print(customer_registration_form.errors)
     else:
-        user_form = UserForm()
+        customer_registration_form = CustomerRegistrationForm()
+        customer_login_form = CustomerLoginForm()
 
     return render_to_response(
         'customers/login_register.html',
-        {'user_form' : user_form, 'registered' : registered },
+        {
+            'customer_registration_form' : customer_registration_form,
+            'customer_login_form' : customer_login_form,
+            'registered' : registered
+        },
         context
     )
 
@@ -50,6 +55,18 @@ def about(request):
     return render_to_response(
         'customers/about.html'
     )
+
+def process_registration(request):
+    pass
+
+def process_login(request):
+    pass
+
+def password_reset(request):
+    return render_to_response(
+        'customers/password_reset.html'
+    )
+
 
 
 
