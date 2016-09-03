@@ -1,12 +1,15 @@
 from django.shortcuts import render
-
+from django.template import loader
 from django.http import HttpResponse
 from django.template import RequestContext
 from django.shortcuts import render_to_response
 from customers.forms import UserForm
 
 def index(request):
-    return HttpResponse("Hello, world. You're at the customers index.")
+    template = loader.get_template('customers/index.html')
+    context = {}
+
+    return HttpResponse(template.render(context, request))
 
 
 def login_register(request):
@@ -31,4 +34,25 @@ def login_register(request):
         {'user_form' : user_form, 'registered' : registered },
         context
     )
+
+def contact_us(request):
+    return render_to_response(
+        'customers/contact_us.html'
+    )
+
+def faq(request):
+    return render_to_response(
+        'customers/faq.html'
+    )
+
+
+def about(request):
+    return render_to_response(
+        'customers/about.html'
+    )
+
+
+
+
+
 

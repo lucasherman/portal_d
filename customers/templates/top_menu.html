@@ -11,7 +11,7 @@
                 </button>
 
                 <!-- Branding Image -->
-                <a class="navbar-brand" href="">
+                <a class="navbar-brand" href="{% url 'index' %}">
                     Logo
                 </a>
             </div>
@@ -21,7 +21,7 @@
                 <!-- Right Side Of Navbar -->
                     <ul class="nav navbar-nav navbar-right">
                         <!-- Authentication Links -->
-                            <li><a href="">Register / Login</a></li>
+                            <li><a href="{% url 'login_register' %}">Register / Login</a></li>
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                                      <span class="caret"></span>
@@ -35,10 +35,10 @@
                 </div>
                 <div class="row">
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="">Contact us</a></li>
-                        <li><a href="">FAQ</a></li>
-                        <li><a href="">About</a></li>
-                        <li><a href="">Register / Login</a></li>
+                        <li><a href="{% url 'contact_us' %}">Contact us</a></li>
+                        <li><a href="{% url 'faq' %}">FAQ</a></li>
+                        <li><a href="{% url 'about' %}">About</a></li>
+                        <li><a href="{% url 'login_register' %}">Register / Login</a></li>
                     </ul>
                 </div>
 

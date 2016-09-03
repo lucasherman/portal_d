@@ -11,12 +11,13 @@
     <script type="text/javascript" src="{% static "js/bootstrap.min.js" %}"></script>
     <script type="text/javascript" src="{% static "js/jquery-3.1.0.min.js" %}"></script>
     <link rel="stylesheet" href="{% static "css/bootstrap.min.css" %}" />
+    <link rel="stylesheet" href="{% static "css/customers.css" %}" />
 </head>
 
 <body class="">
     {% include 'top_menu.html' %}
-    <div id="content" class="col-md-8">
-        {% block content %}{%  endblock %}
-    </div>
+
+    {% block content %}{%  endblock %}
+
     {% include 'footer.html' %}
 </body>
